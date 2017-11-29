@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  orr:
+    image: mmisw/orr:3.7.0
+    container_name: orr
+    depends_on:
+      - agraph
+      - mongo
+
+    ports:
+      - "${ORR_HOST_PORT}:8080"
+
+    volumes:
+      - ${HOST_CONFIG_DIR}:/etc/orront
+      - ${ORR_HOST_DATA}:/opt/orr-ont-base-directory
+
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+
+      - AGRAPH_HOST=agraph
+      - AGRAPH_PORT=10035
+
+  agraph:
+    image: franzinc/agraph:v6.1.1
+    container_name: agraph
+    mem_limit: 1g
+
+    ports:
+      - "${AGRAPH_HOST_PORT}:10035"
+
+    volumes:
+      - ${ORR_HOST_DATA}:/opt/orr-ont-base-directory
+
+  mongo:
+    image: mongo
+    container_name: mongo
+
+    ports:
+      - "${MONGO_HOST_PORT}:27017"
+
+    volumes:
+      - ${MONGO_HOST_DATA}:/data/db

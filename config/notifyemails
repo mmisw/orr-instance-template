@@ -1,0 +1,4 @@
+# List of email addresses to be notified upon any registration
+# event (users, organizations, and ontologies).
+# This file is checked whenever any of such events occurs.
+# Put each email address in a line by itself below.

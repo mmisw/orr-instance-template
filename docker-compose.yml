@@ -34,7 +34,7 @@ services:
       - ${ORR_HOST_DATA}:/opt/orr-ont-base-directory
 
   mongo:
-    image: mongo
+    image: mongo:3.4.2
     container_name: mongo
 
     ports:

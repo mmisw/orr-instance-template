@@ -2,7 +2,7 @@ version: '2'
 
 services:
   orr:
-    image: mmisw/orr:3.7.0
+    image: mmisw/orr:3.7.2
     container_name: orr
     depends_on:
       - agraph
@@ -23,7 +23,7 @@ services:
       - AGRAPH_PORT=10035
 
   agraph:
-    image: franzinc/agraph:v6.1.1
+    image: franzinc/agraph:v6.4.1
     container_name: agraph
     mem_limit: 1g
 

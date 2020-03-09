@@ -1,9 +1,12 @@
-version: '2'
+version: '3'
 
 services:
   orr:
-    image: mmisw/orr:3.7.0
+    image: mmisw/orr:3.8.9
     container_name: orr
+    restart: always
+    shm_size: 2g
+
     depends_on:
       - agraph
       - mongo
@@ -16,6 +19,8 @@ services:
       - ${ORR_HOST_DATA}:/opt/orr-ont-base-directory
 
     environment:
+      - JAVA_OPTS=-XX:MaxRAMPercentage=90.0
+
       - MONGO_HOST=mongo
       - MONGO_PORT=27017
 
@@ -25,7 +30,8 @@ services:
   agraph:
     image: franzinc/agraph:v6.1.1
     container_name: agraph
-    mem_limit: 1g
+    restart: always
+    shm_size: 2g
 
     ports:
       - "${AGRAPH_HOST_PORT}:10035"
@@ -36,6 +42,7 @@ services:
   mongo:
     image: mongo:3.4.2
     container_name: mongo
+    restart: always
 
     ports:
       - "${MONGO_HOST_PORT}:27017"

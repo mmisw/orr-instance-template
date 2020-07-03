@@ -2,7 +2,7 @@ version: '3'
 
 services:
   orr:
-    image: mmisw/orr:3.8.9
+    image: mmisw/orr:3.9.6
     container_name: orr
     restart: always
     shm_size: 2g

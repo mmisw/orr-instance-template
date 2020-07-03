@@ -37,10 +37,11 @@ that are used in later steps:
 - Edit `setenv.sh` to review and adjust the variables as needed.
 - On the command line, "source" `setenv.sh` to expose the variables to the
   environment: `$ source setenv.sh`
-  
+
 ### Configuration
 
 - Edit `config/orront.conf`, which is the master configuration for your ORR instance.
+- Optionally, edit `config/orrportal.config.js`.
 - Optionally, edit `config/notifyemails`.
 
 ### Launching
